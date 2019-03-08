@@ -1,6 +1,6 @@
 import {StyleSheet, View, Platform} from 'react-native'
 import React, {Component} from 'react'
-import {WebView} from "react-native-webview"
+import {WebView} from "omnivirt-react-native-webview"
 import {rotation, setUpdateIntervalForType, SensorTypes} from "omnivirt-react-native-sensors"
 
 export const Mode = {
