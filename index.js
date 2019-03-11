@@ -117,7 +117,7 @@ export default class VRPlayer extends Component<Props> {
   }
 
   listenRotation() {
-    setUpdateIntervalForType(SensorTypes.rotation, 200)
+    setUpdateIntervalForType(SensorTypes.rotation, 1000 / 40)
 
     this._sensorSubscription = rotation.subscribe(({alpha, beta, gamma, orientation}) => {
       if (this._hooked) {
