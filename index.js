@@ -147,7 +147,7 @@ export default class VRPlayer extends Component<Props> {
   _cardboard = Mode.Off
   _interface = Mode.On
   _audio = 1.0
-  _idle = Mode.off
+  _idle = Mode.Off
 
   // Reset these variables when calling reset()
   _quality = null
