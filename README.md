@@ -59,9 +59,32 @@ handleOnCollapsed(player) {
 Please manage expand and collapse layout by yourself.
 
 ## Player Action
+```
+play()
+pause()
+expand()
+collapse()
+back()
+skip()
+cardboard { get; set }
+audio { get; set }
+quality { get; set }
+interface { get; set }
+duration { get; }
+progress { get; }
+buffer { get; }
+seek { get; set }
+latitude { get; set }
+longitude { get; set }
+idle { get; set }
+enable(feature)
+disable(feature)
+switchScene(name)
+sendMessage(command, data)
+receiveMessage(command)
+```
 
 ## Player Events
-
 ```
 onLoaded={(player: Object, maximumQuality: Quality, currentQuality: Quality, currentCardboardMode: Mode) => {}}
 onStarted={(player: Object) => {}}
