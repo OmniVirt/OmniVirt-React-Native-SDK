@@ -96,7 +96,7 @@ onProgressChanged={(player: Object, value: Double) => { /* 0.0 to 1.0 */ }}
 onBufferChanged={(player: Object, value: Double) => { /* 0.0 to 1.0 */ }}
 onSeekChanged={(player: Object, value: Double) => { /* 0.0 to 1.0 */ }}
 onCardboardChanged={(player: Object, mode: Mode) => {}}
-onVolumeChanged={(player: Object, value: Double) => { /*0.0 to 1.0*/ }}
+onVolumeChanged={(player: Object, value: Double) => { /* 0.0 to 1.0 */ }}
 onQualityChanged={(player: Object, quality: Quality) => {}}
 onExpanded={(player: Object) => {}}
 onCollapsed={(player: Object) => {}}
