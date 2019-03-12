@@ -338,6 +338,11 @@ OmniVirt.api.receiveMessage('${command}', function(command, data, iframe) {
               this.props.onLoaded(this, dict["maxQuality"], dict["quality"], this._cardboard)
             }
           }
+          if (Platform.OS === 'android') {
+            this.refs.webView.injectJavaScript(`
+OmniVirt.api.broadcastMessage('disable_web_gyro', true);
+`)
+          }
           break
         case "started":
           if (this.props.onStarted) {
