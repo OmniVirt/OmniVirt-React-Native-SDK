@@ -58,7 +58,7 @@ handleOnCollapsed(player) {
 ```
 You have to manage the expanding and collapsing layout by yourself.
 
-## Player Properties
+## Player Properties And Methods
 ```
 play()
 pause()
