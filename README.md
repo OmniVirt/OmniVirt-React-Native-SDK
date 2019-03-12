@@ -1,4 +1,4 @@
-# 360° VR Player and Monetization for App Developers
+# 360° VR Player and Monetization for React Native Developers
 
 **OmniVirt VR Player** makes the leading player for 360° video experiences across mobile and desktop. Upload your 360° content to OmniVirt and serve it into your app with few easy steps.
 
