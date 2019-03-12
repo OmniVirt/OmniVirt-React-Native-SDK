@@ -13,6 +13,75 @@ Visit [www.omnivirt.com](https://www.omnivirt.com/) to upload content or create 
 
 - [OmniVirt VR Player for React Native](https://github.com/OmniVirt/OmniVirt-React-Native-Example)
 
+## Installation SDK
+
+### Install OmniVirt SDK
+```bash
+$ yarn add omnivirt-react-native-sdk --save
+
+$ react-native link omnivirt-react-native-sensors
+$ react-native link omnivirt-react-native-webview
+```
+### Import VRPlayer
+```javascript
+import {VRPlayer, Feature, Mode, Quality} from "omnivirt-react-native-sdk"
+```
+### Add VRPlayer
+```javascript
+<VRPlayer ref="vrPlayer" />
+```
+### Load Content
+Please add the following code in componentDidMount():
+```javascript
+this.refs.vrPlayer.load(CONTENT_ID)
+```
+Please also change the CONTENT_ID into your creative id, for example: 24.
+
+### Listen to Expand And Collapse Events
+```javascript
+<VRPlayer ref="vrPlayer"
+          onExpanded={this.handleOnExpanded.bind(this)}
+          onCollapsed={this.handleOnCollapsed.bind(this)} />
+```
+Adding the following into your component:
+```javascript
+handleOnExpanded(player) {
+  this.setState({
+    isPlayerInFullscreenMode: true
+  })
+}
+handleOnCollapsed(player) {
+  this.setState({
+    isPlayerInFullscreenMode: false
+  })
+}
+```
+Please manage expand and collapse layout by yourself.
+
+## Player Action
+
+## Player Events
+
+```
+onLoaded={(player: Object, maximumQuality: Quality, currentQuality: Quality, currentCardboardMode: Mode) => {}}
+onStarted={(player: Object) => {}}
+onPaused={(player: Object) => {}}
+onEnded={(player: Object) => {}}
+onSkipped={(player: Object) => {}}
+onDurationChanged={(player: Object, value: Double) => { /* 0.0 to 1.0 */ }}
+onProgressChanged={(player: Object, value: Double) => { /* 0.0 to 1.0 */ }}
+onBufferChanged={(player: Object, value: Double) => { /* 0.0 to 1.0 */ }}
+onSeekChanged={(player: Object, value: Double) => { /* 0.0 to 1.0 */ }}
+onCardboardChanged={(player: Object, mode: Mode) => {}}
+onVolumeChanged={(player: Object, value: Double) => { /*0.0 to 1.0*/ }}
+onQualityChanged={(player: Object, quality: Quality) => {}}
+onExpanded={(player: Object) => {}}
+onCollapsed={(player: Object) => {}}
+onLatitudeChanged={(player: Object, value: Double) => { /* -90 to 90 */ }}
+onLongitudeChanged={(player: Object, value: Double) => { /* 0 to 360 */ }}
+onSwitched={(player: Object, sceneName: String, historyStack: [String]) => {}}
+```
+
 # Questions?
 
 Please email us at [contact@omnivirt.com](mailto:contact@omnivirt.com)
