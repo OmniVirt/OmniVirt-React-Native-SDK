@@ -58,7 +58,7 @@ handleOnCollapsed(player) {
 ```
 Please manage expand and collapse layout by yourself.
 
-## Player Action
+## Player Properties
 ```
 play()
 pause()
