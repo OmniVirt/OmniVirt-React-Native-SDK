@@ -35,7 +35,7 @@ Please add the following code in componentDidMount():
 ```javascript
 this.refs.vrPlayer.load(CONTENT_ID)
 ```
-Please also change the CONTENT_ID into your creative id, for example: 24.
+Don't forget to change the CONTENT_ID into your creative id, for example: 24.
 
 ### Listen to Expand And Collapse Events
 ```javascript
@@ -56,7 +56,7 @@ handleOnCollapsed(player) {
   })
 }
 ```
-Please manage expanding and collapsing layout by yourself.
+You have to manage the expanding and collapsing layout by yourself.
 
 ## Player Properties
 ```
