@@ -56,7 +56,7 @@ handleOnCollapsed(player) {
   })
 }
 ```
-Please manage expand and collapse layout by yourself.
+Please manage expanding and collapsing layout by yourself.
 
 ## Player Properties
 ```
