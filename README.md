@@ -27,6 +27,7 @@ $ react-native link omnivirt-react-native-webview
 import {VRPlayer, Feature, Mode, Quality} from "omnivirt-react-native-sdk"
 ```
 ### Add VRPlayer
+Please add the following code in render():
 ```javascript
 <VRPlayer ref="vrPlayer" />
 ```
@@ -56,7 +57,7 @@ handleOnCollapsed(player) {
   })
 }
 ```
-You have to manage the expanding and collapsing layout by yourself.
+You have to manage the expandable layout by yourself.
 
 ## Player Properties And Methods
 ```
