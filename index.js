@@ -75,6 +75,7 @@ export default class VRPlayer extends Component<Props> {
   _hooked = false
   _isExpanded = false
   _sensorSubscription = null
+  _receivingCallbacks = {}
 
   // --------------------------------------------------------------------------------------
   // Initialize
@@ -167,13 +168,38 @@ OmniVirt.api.sendMessage('${command}', ${JSON.stringify(data)}, document.getElem
 `)
   }
 
-  receiveMessage(command) {
-    this.refs.webView.injectJavaScript(`
+  receiveMessage(command, callback) {
+    if (callback) {
+      if (this._receivingCallbacks[command] === undefined) this._receivingCallbacks[command] = []
+      this._receivingCallbacks[command].push(callback)
+      if (this._receivingCallbacks[command].length == 1) {
+        this.refs.webView.injectJavaScript(`
 OmniVirt.api.receiveMessage('${command}', function(command, data, iframe) {
     window.ReactNativeWebView.postMessage('omnivirtbridge://' + command + '?' + encodeURIComponent(JSON.stringify(data)))
   },
   document.getElementById('ado-${this._contentID}'));
 `)
+      }
+    } else {
+      this.refs.webView.injectJavaScript(`
+OmniVirt.api.receiveMessage('${command}', function(command, data, iframe) {
+    window.ReactNativeWebView.postMessage('omnivirtbridge://' + command + '?' + encodeURIComponent(JSON.stringify(data)))
+  },
+  document.getElementById('ado-${this._contentID}'));
+`)
+    }
+  }
+
+  unbind(command, callback) {
+    if (this._receivingCallbacks[command] === undefined) this._receivingCallbacks[command] = []
+    this._receivingCallbacks[command] = this._receivingCallbacks[command].filter(function(value, index, arr) {
+      value != callback
+    })
+    if (this._receivingCallbacks[command].length == 0) {
+      this.refs.webView.injectJavaScript(`
+OmniVirt.api.unbind('${command}');
+`)
+    }
   }
 
   play() {
@@ -455,9 +481,15 @@ OmniVirt.api.broadcastMessage('disable_web_gyro', true);
           if (this.props.onSwitched) {
             this.props.onSwitched(this, data["scene"], data["history"])
           }
+          break
         default:
-            break
+          break
       }
+
+      if (this._receivingCallbacks[command] === undefined) this._receivingCallbacks[command] = []
+      this._receivingCallbacks[command].forEach((function (callback, index) {
+        callback(command, JSON.parse(json), this)
+      }).bind(this))
     }
   }
 
