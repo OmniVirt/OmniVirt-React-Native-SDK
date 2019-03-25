@@ -82,7 +82,8 @@ enable(feature)
 disable(feature)
 switchScene(name)
 sendMessage(command, data)
-receiveMessage(command)
+receiveMessage(command, (command: String, data: Object, player: Object) => {})
+unbind(command, refFunction)
 ```
 
 ## Player Events
