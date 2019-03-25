@@ -190,11 +190,14 @@ OmniVirt.api.receiveMessage('${command}', function(command, data, iframe) {
     }
   }
 
-  unbind(command, callback) {
+  unbind(command, refCallback) {
     if (this._receivingCallbacks[command] === undefined) this._receivingCallbacks[command] = []
     this._receivingCallbacks[command] = this._receivingCallbacks[command].filter(function(value, index, arr) {
-      value != callback
+      value != refCallback
     })
+    if (refCallback === undefined) {
+      this._receivingCallbacks[command] = []
+    }
     if (this._receivingCallbacks[command].length == 0) {
       this.refs.webView.injectJavaScript(`
 OmniVirt.api.unbind('${command}');
